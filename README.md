@@ -5,16 +5,16 @@ curated for sysadmin, netsec, and cyber.
 
 ---
 
+<img src="https://github.com/tximista64/Sys4dmin/blob/master/Dalastcommit.png" alt="Dalastcommit.png" style="height: 1000px; width: 1000px;" />
+
+---
+
 ## What's Inside
 
 - `startup.html` — A custom Firefox homepage to boost focus and evoke hacker vibes (RSS feeds, no JS).
 - `zshrc` — A clean, efficient Zsh config for daily terminal work.
 - `Dockerfiles/` — Lightweight Docker setups for PowerShell and legacy Python.
 - Misc tools and snippets used throughout my professional reconversion in system, network and cybersecurity.
-
----
-
-<img src="https://github.com/tximista64/Sys4dmin/blob/master/Dalastcommit.png" alt="Dalastcommit.png" style="height: 1000px; width: 1000px;" />
 
 ---
 
