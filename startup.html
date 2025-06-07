@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pseudo page d'accueil</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      padding: 2rem;
+    }
+    h1 {
+      color: white;
+      font-size: 2.5rem; 
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: white;
+      font-size: 1.5rem; 
+      margin-bottom: 2rem;
+    }
+
+
+    .search-box input {
+      background: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      padding: 0.5rem;
+      width: 100%;
+      max-width: 500px;
+      font-size: 1rem;
+    }
+    .links a {
+      display: block;
+      margin-top: 1rem;
+      color: #0f0;
+      text-decoration: none;
+    }
+    .rss-feed {
+      margin-top: 2rem;
+    }
+    .rss-feed li {
+      margin-bottom: 0.5rem;
+    }
+    .rss-feed a {
+      color: #0f0;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Marre des pages d'accueil par defaut?</h1>
+  <h2>Parce-que moi oui...</h2>
+  <div class="search-box">
+    <form action="https://www.google.com/search" method="get">
+      <input type="text" name="q" placeholder="Recherche de Gogol...">
+    </form>
+  </div>
+
+  <div class="links">
+    <a href="https://root-me.org" target="_blank">🔗 Root-Me</a>
+    <a href="https://github.com/tximista64" target="_blank">🔗 GitHub</a>
+    <a href="https://www.notion.com/fr" target="_blank">🔗 Notion</a>
+  </div>
+  <div class="rss-feed">
+    <h2>Veille RSS</h2>
+
+    <section>
+      <h3>🇫🇷 CERT-FR</h3>
+      <ul id="cert-feed"></ul>
+    </section>
+
+    <section>
+      <h3>🧠 DFIR Report</h3>
+      <ul id="dfir-feed"></ul>
+    </section>
+
+
+    <section>
+      <h3>🧪 Infostealers</h3>
+      <ul id="infostealers-feed"></ul>
+    </section>
+
+    <section>
+      <h3>🔍 Unit42 (Palo Alto)</h3>
+      <ul id="unit42-feed"></ul>
+    </section>
+
+    <section>
+      <h3>🛡️ Securelist (Kaspersky)</h3>
+      <ul id="securelist-feed"></ul>
+    </section>
+
+    <section>
+      <h3>💥 Security break</h3>
+      <ul id="securitybreak-feed"></ul>
+    </section>
+
+    <section>
+      <h3>🎯 Zero Day Initiative</h3>
+      <ul id="ztinitiative-feed"></ul>
+    </section>
+
+    <section>
+      <h3>🎧 No limit Secu (podcast)</h3>
+      <ul id="nolimitsecu-feed"></ul>
+    </section>
+
+    <section>
+      <h3>🎧 Darknet Diaries (podcast)</h3>
+      <ul id="darknet-diaries-feed"></ul>
+    </section>
+
+    </section>
+      <h3>🎧 Hack&Speak</h3>
+      <ul id="hackspeak-feed"></ul>
+    </section>
+
+
+    <section>
+      <h3>💀 Root-Me</h3>
+      <ul id="rootme-feed"></ul>
+    </section>
+
+    <section>
+      <h3>📦 HackTheBox Blog</h3>
+      <ul id="hackthebox-feed"></ul>
+    </section>
+
+    <section>
+      <h3>▶️ Laluka</h3>
+      <ul id="laluka-feed"></ul>
+    </section>
+  </div>
+
+  <script>
+    const feeds = [
+      { id: "dfir-feed", url: "https://thedfirreport.com/feed" },
+      { id: "cert-feed", url: "https://www.cert.ssi.gouv.fr/feed/" },
+      { id: "infostealers-feed", url: "https://www.infostealers.com/learn-info-stealers/feed" },
+      { id: "unit42-feed", url: "https://unit42.paloaltonetworks.com/feed/" },
+      { id: "securelist-feed", url: "https://securelist.com/feed/" },
+      { id: "securitybreak-feed", url: "https://blog.securitybreak.io/feed" },
+      { id: "ztinitiative-feed", url: "https://www.zerodayinitiative.com/rss/published/" },
+      { id: "nolimitsecu-feed", url: "https://www.nolimitsecu.fr/feed" },
+      { id: "darknet-diaries-feed", url: "https://feeds.megaphone.fm/darknetdiaries" },
+      { id: "rootme-feed", url: "https://www.root-me.org/?page=backend&lang=fr" },
+      { id: "hackthebox-feed", url: "https://www.hackthebox.com/rss/blog/all" },
+      { id: "hackspeak-feed", url: "https://anchor.fm/s/435c0d58/podcast/rss" },
+      { id: "laluka-feed", url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6hdN69aeX49y7LvtKRUb8w" }
+    ];
+
+    feeds.forEach(feed => {
+      fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById(feed.id);
+          if (!container) return;
+          data.items.slice(0, 2).forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
+            container.appendChild(li);
+          });
+        })
+        .catch(err => {
+          console.warn("Erreur avec le flux :", feed.url, err);
+        });
+    });
+  </script>
+
