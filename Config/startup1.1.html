@@ -32,11 +32,26 @@
       max-width: 500px;
       font-size: 1rem;
     }
-    .links a {
-      display: block;
-      margin-top: 1rem;
-      color: #0f0;
-      text-decoration: none;
+
+
+
+   .links {
+     margin-top: 2rem;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 1rem;
+     margin-bottom: 2rem;
+   }
+
+   .links a {
+     display: inline-block; 
+     width: calc(20% - 1rem); 
+     color: #0f0;
+     text-decoration: none;
+     box-sizing: border-box;
+} 
+
+
     }
     .rss-feed {
       margin-top: 2rem;
@@ -53,7 +68,7 @@
 <body>
 
   <h1>Marre des pages d'accueil par defaut?</h1>
-  <h2>Parce-que moi oui...</h2>
+  <h2> Parce que moi oui!</h2>
   <div class="search-box">
     <form action="https://www.google.com/search" method="get">
       <input type="text" name="q" placeholder="Recherche de Gogol...">
@@ -61,12 +76,15 @@
   </div>
 
   <div class="links">
-    <a href="https://root-me.org" target="_blank">🔗 Root-Me</a>
+    <a href="https://root-me.org" target="_blank">🔗 Root-Me</a> 
+    <a href="https://academy.hackthebox.com/" target="_blank">🔗 HTB Academy</a>
     <a href="https://github.com/tximista64" target="_blank">🔗 GitHub</a>
-    <a href="https://www.notion.com/fr" target="_blank">🔗 Notion</a>
+    <a href="https://book.hacktricks.wiki/fr/generic-hacking/brute-force.html" target="_blank">🔗 Hacktriks</a>
+    <a href="https://www.thehacker.recipes/" target="_blank">🔗 The Hacker Recipes</a>
+    <a href="https://chatgpt.com/" target="_blank">🔗 Chad GPT</a>
   </div>
   <div class="rss-feed">
-    <h2>Veille RSS</h2>
+    <h2>Veille</h2>
 
     <section>
       <h3>🇫🇷 CERT-FR</h3>
@@ -77,7 +95,11 @@
       <h3>🧠 DFIR Report</h3>
       <ul id="dfir-feed"></ul>
     </section>
-
+    
+    <section>
+      <h3>👨💻 Xavki</h3>
+      <ul id=xavki-feed> </ul>
+    </section>
 
     <section>
       <h3>🧪 Infostealers</h3>
@@ -110,6 +132,11 @@
     </section>
 
     <section>
+       <h3>🎧 Hackt Back</h3>
+       <ul id="hacktback-feed"></ul>
+    </section>
+
+    <section>
       <h3>🎧 Darknet Diaries (podcast)</h3>
       <ul id="darknet-diaries-feed"></ul>
     </section>
@@ -118,7 +145,6 @@
       <h3>🎧 Hack&Speak</h3>
       <ul id="hackspeak-feed"></ul>
     </section>
-
 
     <section>
       <h3>💀 Root-Me</h3>
@@ -131,9 +157,15 @@
     </section>
 
     <section>
-      <h3>▶️ Laluka</h3>
+      <h3>▶️  Laluka</h3>
       <ul id="laluka-feed"></ul>
     </section>
+	
+    <section>
+       <h3>🎯 Security-online</h3>
+       <ul id="securityonline-feed"></ul>
+   </section>   
+ 
   </div>
 
   <script>
@@ -141,16 +173,19 @@
       { id: "dfir-feed", url: "https://thedfirreport.com/feed" },
       { id: "cert-feed", url: "https://www.cert.ssi.gouv.fr/feed/" },
       { id: "infostealers-feed", url: "https://www.infostealers.com/learn-info-stealers/feed" },
+      { id: "xavki-feed", url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCs_AZuYXi6NA9tkdbhjItHQ"},    
       { id: "unit42-feed", url: "https://unit42.paloaltonetworks.com/feed/" },
       { id: "securelist-feed", url: "https://securelist.com/feed/" },
       { id: "securitybreak-feed", url: "https://blog.securitybreak.io/feed" },
       { id: "ztinitiative-feed", url: "https://www.zerodayinitiative.com/rss/published/" },
       { id: "nolimitsecu-feed", url: "https://www.nolimitsecu.fr/feed" },
       { id: "darknet-diaries-feed", url: "https://feeds.megaphone.fm/darknetdiaries" },
-      { id: "rootme-feed", url: "https://www.root-me.org/?page=backend&lang=fr" },
+      { id: "rootme-feed", url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCnvB1SJdVYv-1zkByuYM73g" },
       { id: "hackthebox-feed", url: "https://www.hackthebox.com/rss/blog/all" },
       { id: "hackspeak-feed", url: "https://anchor.fm/s/435c0d58/podcast/rss" },
-      { id: "laluka-feed", url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6hdN69aeX49y7LvtKRUb8w" }
+      { id: "laluka-feed", url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6hdN69aeX49y7LvtKRUb8w" },
+      { id: "securityonline-feed", url: "https://securityonline.info/feed/" },
+      { id: "hacktback-feed", url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC3KV-CM2tO4wOsntdKkHXLw" },
     ];
 
     feeds.forEach(feed => {

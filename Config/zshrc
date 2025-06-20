@@ -10,14 +10,14 @@ function print_centered() {
   done
 }
 
-print_centered $'E z i n a   E z i n e z   E g i n a'
+print_centered $'P l u r i t a s  n o n  e s t   p o n e n d a  s i n e  n e c e s s i t a t e'
 
 
 # Emplacement de Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 
-# Thème portofino
-ZSH_THEME="fino"
+# Thème 
+ZSH_THEME="fino-time"
 
 # Plugins utiles
 plugins=(
@@ -52,4 +52,7 @@ setopt correct              # Correction automatique de commande
 autoload -Uz compinit
 compinit
 
+## Misc
+
+export PATH="$PATH:/home/tximista/.local/bin"
 
