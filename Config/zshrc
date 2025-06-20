@@ -10,7 +10,7 @@ function print_centered() {
   done
 }
 
-print_centered $'P l u r i t a s  n o n  e s t   p o n e n d a  s i n e  n e c e s s i t a t e'
+print_centered $'E z i n a  E k i n e z  E g i n a'
 
 
 # Emplacement de Oh My Zsh
@@ -43,10 +43,10 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-setopt append_history       # Ajoute à l'historique sans écraser
-setopt share_history        # Partage l'historique entre sessions
-setopt hist_ignore_all_dups # Ignore les doublons
-setopt correct              # Correction automatique de commande
+setopt append_history      
+setopt share_history        
+setopt hist_ignore_all_dups  
+setopt correct              
 
 # Complétion intelligente
 autoload -Uz compinit
